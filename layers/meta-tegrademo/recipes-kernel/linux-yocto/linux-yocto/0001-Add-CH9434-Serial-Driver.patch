@@ -1,7 +1,7 @@
-From 7059643a964f4556b3f2b91f404e20a74032e92b Mon Sep 17 00:00:00 2001
+From 21b150ceb937ab1a1bde25a489417772c955cd20 Mon Sep 17 00:00:00 2001
 From: Arteom Katkov <akatkov@nilfisk.com>
 Date: Sun, 9 Mar 2025 16:27:21 -0500
-Subject: [PATCH 1/2] Add CH9434 Serial Driver
+Subject: [PATCH] Add CH9434 Serial Driver
 
 ---
  drivers/tty/serial/Kconfig  |    7 +

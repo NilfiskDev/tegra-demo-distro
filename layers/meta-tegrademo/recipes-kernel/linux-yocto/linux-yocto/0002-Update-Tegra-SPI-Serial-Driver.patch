@@ -1,14 +1,14 @@
-From 316b43f4ce42f5a827510e9eef259f2dcc116d1f Mon Sep 17 00:00:00 2001
-From: Arteom Katkov <akatkov@nilfisk.com>
-Date: Sun, 9 Mar 2025 16:27:46 -0500
-Subject: [PATCH 2/2] Update Tegra SPI Serial Driver
+From cf347d6ea6c209ff44fc93a071627f38dbb7b9a8 Mon Sep 17 00:00:00 2001
+From: Arteom Katkov <arteomk0626@gmail.com>
+Date: Mon, 10 Mar 2025 20:37:15 -0500
+Subject: [PATCH] Allow Tegra SPI Driver to use Multiple Types of Delay Units
 
 ---
- drivers/spi/spi-tegra114.c | 37 ++++++++++++++++++++++++++++++-------
- 1 file changed, 30 insertions(+), 7 deletions(-)
+ drivers/spi/spi-tegra114.c | 32 +++++++++++++++++++++++++-------
+ 1 file changed, 25 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/spi/spi-tegra114.c b/drivers/spi/spi-tegra114.c
-index bc7cc4088eea..6d5bf061de0a 100644
+index bc7cc4088eea..658d3326943f 100644
 --- a/drivers/spi/spi-tegra114.c
 +++ b/drivers/spi/spi-tegra114.c
 @@ -716,6 +716,12 @@ static void tegra_spi_deinit_dma_param(struct tegra_spi_data *tspi,
@@ -24,7 +24,7 @@ index bc7cc4088eea..6d5bf061de0a 100644
  static int tegra_spi_set_hw_cs_timing(struct spi_device *spi)
  {
  	struct tegra_spi_data *tspi = spi_controller_get_devdata(spi->controller);
-@@ -728,14 +734,31 @@ static int tegra_spi_set_hw_cs_timing(struct spi_device *spi)
+@@ -728,13 +734,25 @@ static int tegra_spi_set_hw_cs_timing(struct spi_device *spi)
  	u32 inactive_cycles;
  	u8 cs_state;
  
@@ -36,9 +36,6 @@ index bc7cc4088eea..6d5bf061de0a 100644
 -			SPI_DELAY_UNIT_SCK);
 -		return -EINVAL;
 +	u32 curr_speed = (tspi->cur_speed == 0) ? spi->max_speed_hz : tspi->cur_speed;
-+	dev_err(&spi->dev, "spi rate %lu\n", curr_speed);
-+	dev_err(&spi->dev, "Before setup %d hold %d inactive %d\n",
-+		setup->value, hold->value, inactive->value);
 +	// Convert units to clock cycles from usecs and nsecs
 +	if (setup->unit < SPI_DELAY_UNIT_SCK) {
 +		int ns = spi_delay_to_ns(setup, NULL);
@@ -58,11 +55,8 @@ index bc7cc4088eea..6d5bf061de0a 100644
 +		inactive->value = calculate_cycles_rounded_up(curr_speed, ns);
 +		inactive->unit = SPI_DELAY_UNIT_SCK;
  	}
-+	dev_err(&spi->dev, "setup %d hold %d inactive %d\n",
-+		setup->value, hold->value, inactive->value);
  
  	setup_dly = min_t(u8, setup->value, MAX_SETUP_HOLD_CYCLES);
- 	hold_dly = min_t(u8, hold->value, MAX_SETUP_HOLD_CYCLES);
 -- 
 2.34.1
 
