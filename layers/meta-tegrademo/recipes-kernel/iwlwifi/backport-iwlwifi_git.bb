@@ -18,7 +18,7 @@ inherit module features_check
 # either the linux-firmware or iwlwifi-firmware repos.
 
 PV = "93"
-SRCREV = "e2381b25500dfcd4cc53b53463fa73f180f5b5af"
+SRCREV = "eb2ed695e742af3f564f7024f1a37f59d8f5fa1d"
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI = " \
