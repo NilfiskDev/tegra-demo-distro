@@ -21,7 +21,7 @@ LOCALCONF_VERSION = "2"
 
 TD_DEFAULT_DISTRO_FEATURES = "largefile opengl ptest multiarch wayland vulkan systemd pam virtualization usrmerge"
 
-DISTRO_FEATURES ?= "${DISTRO_FEATURES_DEFAULT} ${TD_DEFAULT_DISTRO_FEATURES}"
+DISTRO_FEATURES ?= "${DISTRO_FEATURES_DEFAULT} ${TD_DEFAULT_DISTRO_FEATURES} tpm2 virtualization"
 
 # As of L4T R36, Jetson platforms can use linux-yocto
 # instead of linux-jammy-nvidia-tegra
