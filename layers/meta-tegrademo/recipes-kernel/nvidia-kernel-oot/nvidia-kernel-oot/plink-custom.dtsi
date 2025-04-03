@@ -1,11 +1,11 @@
 /dts-v1/;
 
 / {
-	compatible = "nvidia,p3768-0000+p3767-0004\0nvidia,p3767-0004\0nvidia,tegra234";
+	compatible = "nvidia,p3768-0000+p3767-0004-super\0nvidia,p3767-0004\0nvidia,tegra234";
 	interrupt-parent = <0x01>;
 	#address-cells = <0x02>;
 	#size-cells = <0x02>;
-	model = "NVIDIA Jetson Orin NX Engineering Reference Developer Kit";
+	model = "NVIDIA Jetson Orin Nano Engineering Reference Developer Kit Super";
 
 	bus@0 {
 		compatible = "simple-bus";
@@ -9843,11 +9843,6 @@
 			phandle = <0x337>;
 		};
 
-		opp-1510400000 {
-			opp-hz = <0x00 0x5a06e000>;
-			opp-peak-kBps = <0x30d400>;
-		};
-
 		opp-1984000000 {
 			opp-hz = <0x00 0x76417000>;
 			opp-peak-kBps = <0x30d400>;
@@ -10031,11 +10026,6 @@
 			opp-hz = <0x00 0x8339c000>;
 			opp-peak-kBps = <0x61a800>;
 			phandle = <0x354>;
-		};
-
-		opp-1510400000 {
-			opp-hz = <0x00 0x5a06e000>;
-			opp-peak-kBps = <0x30d400>;
 		};
 
 		opp-1984000000 {
@@ -10223,11 +10213,6 @@
 			phandle = <0x371>;
 		};
 
-		opp-1510400000 {
-			opp-hz = <0x00 0x5a06e000>;
-			opp-peak-kBps = <0x30d400>;
-		};
-
 		opp-1984000000 {
 			opp-hz = <0x00 0x76417000>;
 			opp-peak-kBps = <0x30d400>;
@@ -10328,13 +10313,6 @@
 			linux,code = <0x74>;
 			wakeup-event-action = <0x01>;
 			wakeup-source;
-		};
-
-		key-suspend {
-			label = "Suspend";
-			gpios = <0xf0 0x32 0x01>;
-			linux,input-type = <0x01>;
-			linux,code = <0x8e>;
 		};
 	};
 
@@ -10813,9 +10791,8 @@
 	};
 
 	p-link {
-		key = "C1106/C1108";
 		board = "Y-C11";
-		version = "L4T36.4 / Jetpack6.1";
+		version = "L4T 36.4.3 / Jetpack 6.2";
 	};
 
 	__symbols__ {

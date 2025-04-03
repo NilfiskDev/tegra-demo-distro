@@ -1,6 +1,7 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${BPN}:"
 SRC_URI:append:$jetson-orin-nano-plink-11f1e2 = "\
-    file://y-c11f1e2-orin-nano-364-04.dtb \
+    file://y-c11-orin-nano-3643-04.dtb \
+    file://y-c11-orin-nano-3643-04-super.dtb \
 "
 
 CUSTOM_DIR := "${THISDIR}/${BPN}"

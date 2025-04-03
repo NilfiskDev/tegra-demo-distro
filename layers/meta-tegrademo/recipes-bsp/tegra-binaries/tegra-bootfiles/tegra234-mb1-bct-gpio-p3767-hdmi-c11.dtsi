@@ -40,19 +40,22 @@
 		gpio_main_default: default {
 			gpio-input = <
 				TEGRA234_MAIN_GPIO(B, 0)
-				/*TEGRA234_MAIN_GPIO(Y, 0)
+				TEGRA234_MAIN_GPIO(Y, 0)
 				TEGRA234_MAIN_GPIO(Y, 1)
 				TEGRA234_MAIN_GPIO(Y, 2)
 				TEGRA234_MAIN_GPIO(Y, 3)
-				TEGRA234_MAIN_GPIO(Y, 4)*/	/*modif for spi1(spi3)*/
+				TEGRA234_MAIN_GPIO(Y, 4)
 				TEGRA234_MAIN_GPIO(Z, 1)
-				/*TEGRA234_MAIN_GPIO(Z, 3)
+/*				TEGRA234_MAIN_GPIO(Z, 3)
 				TEGRA234_MAIN_GPIO(Z, 4)
 				TEGRA234_MAIN_GPIO(Z, 5)
 				TEGRA234_MAIN_GPIO(Z, 6)
-				TEGRA234_MAIN_GPIO(Z, 7)*/	/*modif for spi0(spi1)*/
+				TEGRA234_MAIN_GPIO(Z, 7)*/	/* Delete by chenxi*/
 				TEGRA234_MAIN_GPIO(P, 6)
+				TEGRA234_MAIN_GPIO(Q, 5)
 				TEGRA234_MAIN_GPIO(Q, 6)
+				TEGRA234_MAIN_GPIO(R, 4)
+				TEGRA234_MAIN_GPIO(R, 5)
 				TEGRA234_MAIN_GPIO(M, 0)
 				TEGRA234_MAIN_GPIO(N, 1)
 				TEGRA234_MAIN_GPIO(G, 0)
@@ -63,6 +66,7 @@
 				TEGRA234_MAIN_GPIO(I, 0)
 				TEGRA234_MAIN_GPIO(I, 1)
 				TEGRA234_MAIN_GPIO(I, 2)
+				TEGRA234_MAIN_GPIO(AC, 6)
 				TEGRA234_MAIN_GPIO(L, 2)
 				>;
 			gpio-output-low = <
@@ -73,6 +77,7 @@
 				TEGRA234_MAIN_GPIO(K, 5)
 				>;
 			gpio-output-high = <
+				TEGRA234_MAIN_GPIO(Q, 3)
 				TEGRA234_MAIN_GPIO(A, 0)
 				>;
 		};
