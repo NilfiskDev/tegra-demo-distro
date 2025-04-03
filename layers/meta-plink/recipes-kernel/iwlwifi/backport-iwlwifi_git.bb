@@ -22,7 +22,7 @@ SRCREV = "eb2ed695e742af3f564f7024f1a37f59d8f5fa1d"
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI = " \
-           git://git.kernel.org/pub/scm/linux/kernel/git/iwlwifi/backport-iwlwifi;branch=master \
+           git://git.kernel.org/pub/scm/linux/kernel/git/iwlwifi/backport-iwlwifi;branch=release/core${PV} \
            file://0001-Makefile.real-skip-host-install-scripts.patch \
            file://iwlwifi.conf \
           "
