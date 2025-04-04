@@ -1,0 +1,34 @@
+From 7cecf3be9ca315235622423e53acf725efb90292 Mon Sep 17 00:00:00 2001
+From: Arteom Katkov <arteomk0626@gmail.com>
+Date: Thu, 3 Apr 2025 21:07:57 -0500
+Subject: [PATCH] Remove Shell Support and UEFI Timeout
+
+---
+ Platform/NVIDIA/Kconfig | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/Platform/NVIDIA/Kconfig b/Platform/NVIDIA/Kconfig
+index 5403407a..20aaf1fc 100644
+--- a/Platform/NVIDIA/Kconfig
++++ b/Platform/NVIDIA/Kconfig
+@@ -365,7 +365,7 @@ menu "Boot Options"
+   config BOOT_DEFAULT_TIMEOUT
+   int "Boot timeout"
+   depends on SINGLE_BOOT_NONE
+-  default 5
++  default 0
+   help
+     UEFI boot timeout
+ 
+@@ -769,7 +769,7 @@ endmenu
+ 
+ menuconfig SHELL
+ bool "UEFI Shell support"
+-default y
++default n
+ help
+   Support for UEFI shell in the main UEFI firmware image
+ 
+-- 
+2.34.1
+

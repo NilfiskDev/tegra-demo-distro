@@ -17,8 +17,8 @@ inherit module features_check
 # When updating this recipe, ensure that the proper firmware is included from
 # either the linux-firmware or iwlwifi-firmware repos.
 
-PV = "93"
-SRCREV = "eb2ed695e742af3f564f7024f1a37f59d8f5fa1d"
+PV = "75"
+SRCREV = "04ac1fa02a1afab92c12eb769bda158252128072"
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI = " \
