@@ -27,3 +27,6 @@
 [submodule "repos/meta-clang"]
 	path = repos/meta-clang
 	url = https://github.com/kraj/meta-clang
+[submodule "repos/meta-browser"]
+	path = repos/meta-browser
+	url = https://github.com/OSSystems/meta-browser.git
