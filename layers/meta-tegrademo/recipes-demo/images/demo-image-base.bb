@@ -9,7 +9,6 @@ CORE_IMAGE_BASE_INSTALL += "networkmanager modemmanager ethtool backport-iwlwifi
 CORE_IMAGE_BASE_INSTALL += "iotedge aziot-edged"
 
 # Add X11 Server and dependencies
-# CORE_IMAGE_BASE_INSTALL += "packagegroup-core-x11"
 EXTRA_IMAGE_FEATURES += "x11"
 EXTRA_IMAGE_FEATURES += "package-management"
 
@@ -17,10 +16,11 @@ EXTRA_IMAGE_FEATURES += "package-management"
 CORE_IMAGE_BASE_INSTALL += "nvidia-docker docker-compose"
 
 # Add nvidia jetpack runtime components
-CORE_IMAGE_BASE_INSTALL += "nvidia-docker cuda-libraries opencv cudnn tensorrt-core libnvvpi3"
+CORE_IMAGE_BASE_INSTALL += "cuda-libraries opencv cudnn tensorrt-core libnvvpi3"
 
 # Add misc image components
 CORE_IMAGE_BASE_INSTALL += " \
     xdg-utils \
     chromium-x11 \
+    packagegroup-python3 \
 "
