@@ -2,10 +2,8 @@ DESCRIPTION = "Tegra demo base image"
 
 require demo-image-common.inc
 
-DISTRO_FEATURES += "systemd-resolved"
-
 # Install networking dependencies
-CORE_IMAGE_BASE_INSTALL += "networkmanager modemmanager ethtool backport-iwlwifi"
+CORE_IMAGE_BASE_INSTALL += "networkmanager modemmanager ethtool backport-iwlwifi net-tools ufw"
 
 # Add iotedge and aziot-edged
 CORE_IMAGE_BASE_INSTALL += "iotedge aziot-edged"
@@ -28,6 +26,8 @@ CORE_IMAGE_BASE_INSTALL += " \
     v4l2loopback \
     devmem2 \
 "
+
+IMAGE_INSTALL += "ffmpeg"
 
 # Configure users
 inherit extrausers

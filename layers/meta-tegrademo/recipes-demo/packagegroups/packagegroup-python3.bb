@@ -24,4 +24,6 @@ RDEPENDS:${PN} = "\
     python3-starlette \
     python3-requests \
     python3-docker \
+    python3-socketio \
+    python3-pyserial \
 "
