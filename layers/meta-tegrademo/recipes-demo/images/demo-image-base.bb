@@ -13,7 +13,6 @@ IMAGE_INSTALL += " \
     xserver-xorg \
     xserver-xorg-extension-dri \
     xserver-xorg-extension-dri2 \
-    xserver-xorg-extension-glx2 \
     xf86-video-fbdev \
     xf86-video-modesetting \
     packagegroup-core-x11-utils \
@@ -43,7 +42,9 @@ CORE_IMAGE_BASE_INSTALL += " \
     fake-hwclock \
     tzdata \
     can-utils \
-    gdm \
+    tegra-libraries-vulkan \
+    vulkan-headers \
+    mesa \
 "
 
 IMAGE_INSTALL += "ffmpeg gstreamer1.0-rtsp-server gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav"

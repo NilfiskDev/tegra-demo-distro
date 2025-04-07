@@ -16,8 +16,8 @@ Before=shutdown.target time-sync.target ntpdate.service ntpd.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/bin/fake-hwclock load
-ExecStop=/usr/bin/fake-hwclock save
+ExecStart=/usr/local/bin/fake-hwclock load
+ExecStop=/usr/local/bin/fake-hwclock save
 
 [Install]
 WantedBy=multi-user.target

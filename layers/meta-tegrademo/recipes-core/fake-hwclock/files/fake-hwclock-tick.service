@@ -3,4 +3,4 @@ Description=Save hwclock by timer
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/fake-hwclock tick > /dev/null
+ExecStart=/usr/local/bin/fake-hwclock tick > /dev/null

@@ -28,6 +28,6 @@ do_install:append() {
     install -m 0644 ${UNPACKDIR}/fake-hwclock-tick.service ${D}${systemd_unitdir}/system
     install -m 0644 ${UNPACKDIR}/fake-hwclock-tick.timer ${D}${systemd_unitdir}/system
 
-    install -d ${D}/usr/bin/fake-hwclock
-    install -m 0755 ${UNPACKDIR}/fake-hwclock ${D}/usr/bin/fake-hwclock
+    install -d ${D}/usr/lcoal/bin/
+    install -m 0755 ${UNPACKDIR}/fake-hwclock ${D}/usr/local/bin
 }

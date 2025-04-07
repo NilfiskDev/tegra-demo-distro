@@ -1,1 +1,1 @@
-DEPENDS += "virtual/libgbm"
+DEPENDS += "mesa"
