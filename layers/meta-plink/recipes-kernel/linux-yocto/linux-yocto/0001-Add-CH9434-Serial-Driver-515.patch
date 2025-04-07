@@ -36,7 +36,7 @@ index 7da0856cd198..2075b19930dd 100644
  
  obj-$(CONFIG_SERIAL_21285) += 21285.o
  
-+(CONFIG_SERIAL_CH943X) += ch9434.o
++obj-$(CONFIG_SERIAL_CH943X) += ch9434.o
 +
  # Now bring in any enabled 8250/16450/16550 type drivers.
  obj-$(CONFIG_SERIAL_8250) += 8250/
@@ -46,7 +46,7 @@ new file mode 100644
 index 000000000000..ef4d18428ff6
 --- /dev/null
 +++ b/drivers/tty/serial/ch9434.c
-@@ -0,0 +1,1623 @@
+@@ -0,0 +1,1621 @@
 +/*
 +* SPI serial driver for USB to Quad UARTs chip ch9434.
 +*
@@ -72,8 +72,6 @@ index 000000000000..ef4d18428ff6
 +
 +#undef DEBUG
 +#undef VERBOSE_DEBUG
-+
-+#error test
 +
 +#include "linux/version.h"
 +#include <linux/bitops.h>
@@ -1522,7 +1520,7 @@ index 000000000000..ef4d18428ff6
 +
 +static const struct of_device_id __maybe_unused ch943x_dt_ids[] = {
 +    {
-+        .compatible = "wch,ch943x",
++        .compatible = CH943X_NAME_SPI,
 +        .data = &ch943x_devtype,
 +    },
 +    {},

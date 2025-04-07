@@ -26,4 +26,5 @@ RDEPENDS:${PN} = "\
     python3-docker \
     python3-socketio \
     python3-pyserial \
+    python3-jetson-stats \
 "

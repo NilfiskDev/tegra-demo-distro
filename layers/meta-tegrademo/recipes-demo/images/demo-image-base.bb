@@ -9,8 +9,19 @@ CORE_IMAGE_BASE_INSTALL += "networkmanager modemmanager ethtool backport-iwlwifi
 CORE_IMAGE_BASE_INSTALL += "iotedge aziot-edged"
 
 # Add X11 Server and dependencies
-EXTRA_IMAGE_FEATURES += "x11"
-EXTRA_IMAGE_FEATURES += "package-management"
+IMAGE_INSTALL += " \
+    xserver-xorg \
+    xserver-xorg-extension-dri \
+    xserver-xorg-extension-dri2 \
+    xserver-xorg-extension-glx2 \
+    xf86-video-fbdev \
+    xf86-video-modesetting \
+    packagegroup-core-x11-utils \
+    matchbox-wm \
+    mini-x-session \
+    liberation-fonts \
+"
+EXTRA_IMAGE_FEATURES += "x11 package-management"
 
 # Add Virtualization Components
 CORE_IMAGE_BASE_INSTALL += "nvidia-docker docker-compose"
@@ -25,9 +36,17 @@ CORE_IMAGE_BASE_INSTALL += " \
     packagegroup-python3 \
     v4l2loopback \
     devmem2 \
+    e2fsprogs \
+    e2fsprogs-resize2fs \
+    iproute2 \
+    ifupdown \
+    fake-hwclock \
+    tzdata \
+    can-utils \
+    gdm \
 "
 
-IMAGE_INSTALL += "ffmpeg"
+IMAGE_INSTALL += "ffmpeg gstreamer1.0-rtsp-server gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav"
 
 # Configure users
 inherit extrausers
@@ -37,5 +56,8 @@ NVIDIA_PASSWORD = "\$6\$qToCNITxIvqTSDSF\$UmckNUSMLOr7MLtLWhOCO6Jke2a..3qc5jntDU
 EXTRA_USERS_PARAMS:append = "\
     useradd -u 1000 -d /home/nvidia -s /bin/sh -p '${NVIDIA_PASSWORD}' nvidia; \
     usermod -a -G sudo nvidia; \
+    usermod -a -G systemd-journal nvidia; \
+    usermod -a -G input nvidia; \
+    usermod -a -G tty nvidia; \
     usermod -L -e 1 root; \
 "
