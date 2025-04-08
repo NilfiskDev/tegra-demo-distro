@@ -4,7 +4,7 @@
 # This format sorts lexicographically
 
 CLOCKFILE="/etc/fake-hwclock.data"
-CTIME=$(date --rfc-3339=seconds)
+CTIME=$(date +"%Y-%m-%d %H:%M:%S")
 FTIME=$(test -f "${CLOCKFILE}" && cat "${CLOCKFILE}")
 
 # if the file time is in the future, use that
@@ -12,7 +12,6 @@ setclock() {
 	if expr "${FTIME}" \> "${CTIME}" ; then
 		echo "loading saved time ${FTIME} over ${CTIME}"
 		date --set="${FTIME}"
-		#date --date="${FTIME}"
 		#echo would set clock to $FTIME
 	else
 		echo "ignoring saved time ${FTIME} over ${CTIME}"

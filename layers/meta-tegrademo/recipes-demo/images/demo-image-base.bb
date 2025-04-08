@@ -21,6 +21,7 @@ IMAGE_INSTALL += " \
     liberation-fonts \
 "
 EXTRA_IMAGE_FEATURES += "x11 package-management"
+KERNEL_MODULE_AUTOLOAD += "nvidia_modeset"
 
 # Add Virtualization Components
 CORE_IMAGE_BASE_INSTALL += "nvidia-docker docker-compose"
@@ -44,7 +45,7 @@ CORE_IMAGE_BASE_INSTALL += " \
     can-utils \
     tegra-libraries-vulkan \
     vulkan-headers \
-    mesa \
+    xuser-account \
 "
 
 IMAGE_INSTALL += "ffmpeg gstreamer1.0-rtsp-server gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav"
@@ -56,9 +57,6 @@ IMAGE_INSTALL:append = " sudo"
 NVIDIA_PASSWORD = "\$6\$qToCNITxIvqTSDSF\$UmckNUSMLOr7MLtLWhOCO6Jke2a..3qc5jntDUBRQBWZU8rA6/05U/KLNLuZI7fbrwFZ7pKL9628ioA59xOQS/"
 EXTRA_USERS_PARAMS:append = "\
     useradd -u 1000 -d /home/nvidia -s /bin/sh -p '${NVIDIA_PASSWORD}' nvidia; \
-    usermod -a -G sudo nvidia; \
-    usermod -a -G systemd-journal nvidia; \
-    usermod -a -G input nvidia; \
-    usermod -a -G tty nvidia; \
+    usermod -a -G sudo,systemd-journal,shutdown nvidia; \
     usermod -L -e 1 root; \
 "
