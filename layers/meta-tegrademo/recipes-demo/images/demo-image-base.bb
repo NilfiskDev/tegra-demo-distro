@@ -27,7 +27,19 @@ KERNEL_MODULE_AUTOLOAD += "nvidia_modeset"
 CORE_IMAGE_BASE_INSTALL += "nvidia-docker docker-compose"
 
 # Add nvidia jetpack runtime components
-CORE_IMAGE_BASE_INSTALL += "cuda-libraries opencv cudnn tensorrt-core"
+CORE_IMAGE_BASE_INSTALL += "\
+    cuda-libraries \
+    opencv \
+    cudnn \
+    tensorrt-core \
+    tegra-mmapi \
+    libnvvpi3 \
+    tegra-libraries-vulkan \
+    tegra-libraries-multimedia-utils \
+    tegra-libraries-multimedia-v4l \
+    tegra-libraries-camera \
+    gstreamer1.0-plugins-tegra-binaryonly \
+"
 
 # Add misc image components
 CORE_IMAGE_BASE_INSTALL += " \
@@ -43,12 +55,29 @@ CORE_IMAGE_BASE_INSTALL += " \
     fake-hwclock \
     tzdata \
     can-utils \
-    tegra-libraries-vulkan \
     vulkan-headers \
     xuser-account \
+    zram \
 "
 
-IMAGE_INSTALL += "ffmpeg gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-plugins-bad"
+IMAGE_INSTALL += "\
+    ffmpeg \
+    gstreamer1.0 \
+    gstreamer1.0-plugins-base \
+    gstreamer1.0-plugins-bad \
+    gstreamer1.0-plugins-nvarguscamerasrc \
+    gstreamer1.0-plugins-nvv4l2camerasrc \
+    gstreamer1.0-plugins-nveglgles \
+    gstreamer1.0-plugins-nvipcpipeline \
+    gstreamer1.0-plugins-nvjpeg \
+    gstreamer1.0-plugins-nvvideo4linux2 \
+    gstreamer1.0-plugins-nvvideosinks \
+    gstreamer1.0-plugins-nvtee \
+    gstreamer1.0-plugins-nvdrmvideosink \
+    gstreamer1.0-plugins-nvunixfd \
+    gstreamer1.0-plugins-nvvidconv \
+    gstreamer1.0-plugins-nvcompositor \
+"
 
 # Configure users
 inherit extrausers
