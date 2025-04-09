@@ -3,7 +3,7 @@ DESCRIPTION = "Tegra demo base image"
 require demo-image-common.inc
 
 # Install networking dependencies
-CORE_IMAGE_BASE_INSTALL += "networkmanager modemmanager ethtool backport-iwlwifi net-tools ufw"
+CORE_IMAGE_BASE_INSTALL += "networkmanager modemmanager ethtool backport-iwlwifi net-tools ufw networking-service"
 
 # Add iotedge and aziot-edged
 CORE_IMAGE_BASE_INSTALL += "iotedge aziot-edged"
@@ -48,7 +48,7 @@ CORE_IMAGE_BASE_INSTALL += " \
     xuser-account \
 "
 
-IMAGE_INSTALL += "ffmpeg gstreamer1.0-rtsp-server gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav"
+IMAGE_INSTALL += "ffmpeg gstreamer1.0 gstreamer1.0-plugins-base gstreamer1.0-plugins-bad"
 
 # Configure users
 inherit extrausers
