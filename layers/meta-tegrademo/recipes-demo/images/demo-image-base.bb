@@ -16,12 +16,8 @@ IMAGE_INSTALL += " \
     xf86-video-fbdev \
     xf86-video-modesetting \
     packagegroup-core-x11-utils \
-    matchbox-wm \
-    mini-x-session \
-    liberation-fonts \
 "
 EXTRA_IMAGE_FEATURES += "x11 package-management"
-KERNEL_MODULE_AUTOLOAD += "nvidia_modeset"
 
 # Add Virtualization Components
 CORE_IMAGE_BASE_INSTALL += "nvidia-docker docker-compose"
@@ -38,7 +34,7 @@ CORE_IMAGE_BASE_INSTALL += "\
     tegra-libraries-multimedia-utils \
     tegra-libraries-multimedia-v4l \
     tegra-libraries-camera \
-    gstreamer1.0-plugins-tegra-binaryonly \
+    packagegroup-gstreamer-plugins \
 "
 
 # Add misc image components
@@ -60,24 +56,7 @@ CORE_IMAGE_BASE_INSTALL += " \
     zram \
 "
 
-IMAGE_INSTALL += "\
-    ffmpeg \
-    gstreamer1.0 \
-    gstreamer1.0-plugins-base \
-    gstreamer1.0-plugins-bad \
-    gstreamer1.0-plugins-nvarguscamerasrc \
-    gstreamer1.0-plugins-nvv4l2camerasrc \
-    gstreamer1.0-plugins-nveglgles \
-    gstreamer1.0-plugins-nvipcpipeline \
-    gstreamer1.0-plugins-nvjpeg \
-    gstreamer1.0-plugins-nvvideo4linux2 \
-    gstreamer1.0-plugins-nvvideosinks \
-    gstreamer1.0-plugins-nvtee \
-    gstreamer1.0-plugins-nvdrmvideosink \
-    gstreamer1.0-plugins-nvunixfd \
-    gstreamer1.0-plugins-nvvidconv \
-    gstreamer1.0-plugins-nvcompositor \
-"
+IMAGE_INSTALL += "ffmpeg"
 
 # Configure users
 inherit extrausers
