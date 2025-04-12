@@ -1,13 +1,13 @@
 DISTRO = "mli"
-DISTRO_NAME = "OE4Tegra Demonstration Distro"
-DISTRO_VERSION_BASE = "5.2"
+DISTRO_NAME = "Nilfisk MLI Distribution"
+DISTRO_VERSION_BASE = "1.0"
 DISTRO_VERSION = "${DISTRO_VERSION_BASE}+snapshot-${METADATA_REVISION}"
 DISTRO_CODENAME = "master"
 SDK_VENDOR = "-tdsdk"
 SDK_VERSION := "${@'${DISTRO_VERSION}'.replace('snapshot-${METADATA_REVISION}','snapshot')}"
 SDK_VERSION[vardepvalue] = "${SDK_VERSION}"
 
-MAINTAINER = "OE4Tegra team <oe4tegra@madison.systems>"
+MAINTAINER = "Arteom Katkov <akatkov@nilfisk.com>"
 
 TARGET_VENDOR = "-oe4t"
 

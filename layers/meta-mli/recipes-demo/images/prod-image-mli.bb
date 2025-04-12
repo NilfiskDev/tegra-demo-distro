@@ -1,6 +1,6 @@
-DESCRIPTION = "Tegra demo base image"
+DESCRIPTION = "MLI Production Image"
 
-require demo-image-common.inc
+require tegra-image-common.inc
 
 # Install networking dependencies
 CORE_IMAGE_BASE_INSTALL += "\
