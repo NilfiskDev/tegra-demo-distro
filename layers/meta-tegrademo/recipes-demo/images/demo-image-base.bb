@@ -3,13 +3,23 @@ DESCRIPTION = "Tegra demo base image"
 require demo-image-common.inc
 
 # Install networking dependencies
-CORE_IMAGE_BASE_INSTALL += "networkmanager modemmanager ethtool backport-iwlwifi net-tools ufw networking-service"
+CORE_IMAGE_BASE_INSTALL += "\
+    networkmanager \
+    modemmanager \
+    ethtool \
+    backport-iwlwifi \
+    net-tools \
+    ufw \
+    networking-service \
+    iproute2 \
+    ifupdown \
+"
 
 # Add iotedge and aziot-edged
 CORE_IMAGE_BASE_INSTALL += "iotedge aziot-edged"
 
 # Add X11 Server and dependencies
-IMAGE_INSTALL += " \
+IMAGE_INSTALL += "\
     xserver-xorg \
     xserver-xorg-extension-dri \
     xserver-xorg-extension-dri2 \
@@ -46,8 +56,6 @@ CORE_IMAGE_BASE_INSTALL += " \
     devmem2 \
     e2fsprogs \
     e2fsprogs-resize2fs \
-    iproute2 \
-    ifupdown \
     fake-hwclock \
     tzdata \
     can-utils \

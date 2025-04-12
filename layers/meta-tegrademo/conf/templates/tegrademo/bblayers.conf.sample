@@ -19,7 +19,6 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-iotedge \
   ##OEROOT##/meta-tegra-community \
   ##OEROOT##/meta-tegra-support \
-  ##OEROOT##/meta-demo-ci \
   ##OEROOT##/meta-plink \
   ##OEROOT##/meta-tegrademo \
   "
