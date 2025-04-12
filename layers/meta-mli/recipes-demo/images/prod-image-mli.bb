@@ -54,7 +54,6 @@ CORE_IMAGE_BASE_INSTALL += " \
     packagegroup-python3 \
     v4l2loopback \
     devmem2 \
-    e2fsprogs \
     e2fsprogs-resize2fs \
     fake-hwclock \
     tzdata \
