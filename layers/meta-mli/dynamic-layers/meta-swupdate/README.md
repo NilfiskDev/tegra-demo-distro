@@ -40,7 +40,7 @@ build to specify the swupdate-oe4t-lasttested.yml file from
 the base directory, for instance:
 
 ```
-kas build layers/meta-tegrademo/dynamic-layers/meta-swupdate/conf/kas/swupdate-oe4t-lasttested.yml
+kas build layers/meta-mli/dynamic-layers/meta-swupdate/conf/kas/swupdate-oe4t-lasttested.yml
 ```
 You may need to modify the machine setting or set KAS_MACHINE appropriately.
 

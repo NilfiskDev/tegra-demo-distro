@@ -16,6 +16,8 @@
 # This sets the default machine to be qemux86-64 if no other machine is selected:
 MACHINE ??= "qemux86-64"
 
+LICENSE_FLAGS_ACCEPTED = "commercial"
+
 #
 # Where to place downloads
 #
@@ -62,7 +64,7 @@ MACHINE ??= "qemux86-64"
 #
 #@TD_SETUP_DISTRO@ - placeholder for automatic insertion by setup-env
 # Base distro for meta-tegra
-#DISTRO ?= "tegrademo"
+#DISTRO ?= "mli"
 
 #
 # Package Management configuration
@@ -75,7 +77,7 @@ MACHINE ??= "qemux86-64"
 #  - 'package_ipk' for ipk files are used by opkg (a debian style embedded package manager)
 #  - 'package_rpm' for rpm style packages
 # E.g.: PACKAGE_CLASSES ?= "package_rpm package_deb package_ipk"
-# The tegrademo distro defaults to rpm:
+# The mli distro defaults to rpm:
 #PACKAGE_CLASSES ?= "package_rpm"
 
 #
@@ -202,7 +204,7 @@ BB_DISKMON_DIRS ??= "\
 # present in the cache. It assumes you can download something faster than you can build it
 # which will depend on your network.
 # Note: For this to work you also need hash-equivalence passthrough to the matching server
-# Also note that for the tegrademo distro, sstate maintained by the Yocto Project sstate
+# Also note that for the mli distro, sstate maintained by the Yocto Project sstate
 # is probably not very helpful.
 #
 #BB_HASHSERVE_UPSTREAM = 'wss://hashserv.yoctoproject.org/ws'

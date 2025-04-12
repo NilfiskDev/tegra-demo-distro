@@ -1,4 +1,4 @@
-DISTRO = "tegrademo"
+DISTRO = "mli"
 DISTRO_NAME = "OE4Tegra Demonstration Distro"
 DISTRO_VERSION_BASE = "5.2"
 DISTRO_VERSION = "${DISTRO_VERSION_BASE}+snapshot-${METADATA_REVISION}"

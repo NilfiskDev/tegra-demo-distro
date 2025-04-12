@@ -1,7 +1,7 @@
 # Version of layers configuration, specific to
 # each defined distro in the repository.
 # Format: ${DISTRO}-<version>
-TD_BBLAYERS_CONF_VERSION = "tegrademo-5"
+TD_BBLAYERS_CONF_VERSION = "mli-5"
 
 BBPATH = "${TOPDIR}"
 BBFILES ?= ""
@@ -15,10 +15,11 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-filesystems \
   ##OEROOT##/meta-virtualization \
   ##OEROOT##/meta-clang \
+  ##OEROOT##/meta-chromium \
   ##OEROOT##/meta-tpm \
   ##OEROOT##/meta-iotedge \
   ##OEROOT##/meta-tegra-community \
   ##OEROOT##/meta-tegra-support \
   ##OEROOT##/meta-plink \
-  ##OEROOT##/meta-tegrademo \
+  ##OEROOT##/meta-mli \
   "
