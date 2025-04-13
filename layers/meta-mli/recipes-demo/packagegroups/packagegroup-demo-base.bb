@@ -8,5 +8,6 @@ RDEPENDS:${PN} = " \
     procps \
     sshfs-fuse \
     strace \
-    tegra-tools-tegrastats \
+    tegra-tools \
+    l4t-usb-device-mode \
 "
