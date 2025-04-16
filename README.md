@@ -1,6 +1,6 @@
-# tegra-demo-distro
+# Plink BSP/MLI Distribution
 
-Reference/demo distribution for NVIDIA Jetson platforms
+Nilfisk MLI ditribution and Plink BSP files built
 using Yocto Project tools and the [meta-tegra](https://github.com/OE4T/meta-tegra) BSP layer.
 
 ![Build status](https://builder.madison.systems/badges/tegrademo-master.svg)
@@ -10,10 +10,13 @@ Metadata layers are brought in as git submodules:
 | Layer Repo            | Branch         | Description                                         |
 | --------------------- | ---------------|---------------------------------------------------- |
 | poky                  | master         | OE-Core from poky repo at yoctoproject.org          |
-| meta-tegra            | master         | L4T BSP layer - L4T R36.4.0/JetPack 6.1             |
+| meta-tegra            | master         | L4T BSP layer - L4T R36.4.3/JetPack 6.2             |
 | meta-tegra-community  | master         | OE4T layer with additions from the community        |
 | meta-openembedded     | master         | OpenEmbedded layers                                 |
 | meta-virtualization   | master         | Virtualization layer for docker support             |
+| meta-clang            | master         | Clang compiler support                              |
+| meta-iotedge          | master         | Microsoft Iotedge support                           |
+| meta-chromium         | master         | Chromium support                                    |
 
 ## Prerequisites
 
@@ -27,11 +30,9 @@ package is recommended.
 
 1. Clone this repository:
 
-        $ git clone https://github.com/OE4T/tegra-demo-distro.git
+        $ git clone https://github.com/NilfiskDev/tegra-demo-distro.git
 
-2. Switch to the appropriate branch, using the
-   [wiki page](https://github.com/OE4T/tegra-demo-distro/wiki/Which-branch-should-I-use%3F)
-   for guidance.
+2. Switch to the appropriate branch, jetapck-x.x.x
 
 3. Initialize the git submodules:
 
@@ -44,7 +45,7 @@ package is recommended.
    called `build` that is set up for the Jetson Xavier NX
    developer kit and the default `tegrademo` distro:
 
-        $ . ./setup-env --machine jetson-xavier-nx-devkit
+        $ . ./setup-env --machine jetson-plink-11f1e2
 
    You can get a complete list of available options, MACHINE
    names, and DISTRO names with
@@ -65,7 +66,7 @@ Currently supported distributions are listed below:
 
 | Distribution name | Description                                                   |
 | ----------------- | ------------------------------------------------------------- |
-| tegrademo         | Default distro used to demonstrate/test meta-tegra features   |
+| mli               | Ditribution used for Nilfisk MLI Machines                     |
 
 ## Images
 
@@ -76,11 +77,8 @@ demo applications.
 
 | Recipe name       | Description                                                   |
 | ----------------- | ------------------------------------------------------------- |
-| demo-image-base   | Basic image with no graphics                                  |
-| demo-image-egl    | Base with DRM/EGL graphics, no window manager                 |
-| demo-image-sato   | X11 image with Sato UI                                        |
-| demo-image-weston | Wayland with Weston compositor                                |
-| demo-image-full   | Sato image plus nvidia-docker, openCV, multimedia API samples |
+| prod-image-mli    | Production MLI Image without Development Packages             |
+
 
 ### Update image demo
 
@@ -88,7 +86,3 @@ A [swupdate](https://sbabic.github.io/swupdate/) demo image is also available wh
 A/B rootfs updates to any of the supported images.  For details refer to
 [layers/meta-tegrademo/dynamic-layers/meta-swupdate/README.md](layers/meta-tegrademo/dynamic-layers/meta-swupdate/README.md).
 
-# Contributing
-
-Please see the contributor wiki page at [this link](https://github.com/OE4T/meta-tegra/wiki/OE4T-Contributor-Guide).
-Contributions are welcome!
