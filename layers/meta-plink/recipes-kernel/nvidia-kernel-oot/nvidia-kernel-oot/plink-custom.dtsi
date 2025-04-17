@@ -3428,7 +3428,7 @@
 			spi@0 {
 				compatible = "ch943x_spi";
 				reg = <0x00>;
-				spi-max-frequency = <8000000>;
+				spi-max-frequency = <6000000>;
 				#address-cells = <0x01>;
 				#size-cell = <0x01>;
 				interrupt-parent = <0xf0>;
