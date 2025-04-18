@@ -1,0 +1,62 @@
+From cf347d6ea6c209ff44fc93a071627f38dbb7b9a8 Mon Sep 17 00:00:00 2001
+From: Arteom Katkov <arteomk0626@gmail.com>
+Date: Mon, 10 Mar 2025 20:37:15 -0500
+Subject: [PATCH] Allow Tegra SPI Driver to use Multiple Types of Delay Units
+
+---
+ drivers/spi/spi-tegra114.c | 32 +++++++++++++++++++++++++-------
+ 1 file changed, 25 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/spi/spi-tegra114.c b/drivers/spi/spi-tegra114.c
+index bc7cc4088eea..658d3326943f 100644
+--- a/drivers/spi/spi-tegra114.c
++++ b/drivers/spi/spi-tegra114.c
+@@ -716,6 +716,12 @@ static void tegra_spi_deinit_dma_param(struct tegra_spi_data *tspi,
+ 	dma_release_channel(dma_chan);
+ }
+ 
++static unsigned calculate_cycles_rounded_up(unsigned long clock_rate_hz, unsigned delay_ns) {
++    // Add 999999999 to delay_ns * clock_rate_hz to round up when dividing
++    unsigned cycles = ((unsigned long long)delay_ns * (unsigned long long)clock_rate_hz + 999999999) / 1000000000;
++    return cycles;
++}
++
+ static int tegra_spi_set_hw_cs_timing(struct spi_device *spi)
+ {
+ 	struct tegra_spi_data *tspi = spi_controller_get_devdata(spi->controller);
+@@ -728,13 +734,25 @@ static int tegra_spi_set_hw_cs_timing(struct spi_device *spi)
+ 	u32 inactive_cycles;
+ 	u8 cs_state;
+ 
+-	if (setup->unit != SPI_DELAY_UNIT_SCK ||
+-	    hold->unit != SPI_DELAY_UNIT_SCK ||
+-	    inactive->unit != SPI_DELAY_UNIT_SCK) {
+-		dev_err(&spi->dev,
+-			"Invalid delay unit %d, should be SPI_DELAY_UNIT_SCK\n",
+-			SPI_DELAY_UNIT_SCK);
+-		return -EINVAL;
++	u32 curr_speed = (tspi->cur_speed == 0) ? spi->max_speed_hz : tspi->cur_speed;
++	// Convert units to clock cycles from usecs and nsecs
++	if (setup->unit < SPI_DELAY_UNIT_SCK) {
++		int ns = spi_delay_to_ns(setup, NULL);
++
++		setup->value =calculate_cycles_rounded_up(curr_speed, ns);
++		setup->unit = SPI_DELAY_UNIT_SCK;
++	}
++	if (hold->unit < SPI_DELAY_UNIT_SCK) {
++		int ns = spi_delay_to_ns(hold, NULL);
++
++		hold->value = calculate_cycles_rounded_up(curr_speed, ns);
++		hold->unit = SPI_DELAY_UNIT_SCK;
++	}
++	if (inactive->unit < SPI_DELAY_UNIT_SCK) {
++		int ns = spi_delay_to_ns(inactive, NULL);
++
++		inactive->value = calculate_cycles_rounded_up(curr_speed, ns);
++		inactive->unit = SPI_DELAY_UNIT_SCK;
+ 	}
+ 
+ 	setup_dly = min_t(u8, setup->value, MAX_SETUP_HOLD_CYCLES);
+-- 
+2.34.1
+

@@ -1,0 +1,1 @@
+SUBSYSTEM=="net", ACTION=="add", NAME=="usb0", RUN+="/bin/sh -c 'echo device > /sys/class/usb_role/usb2-0-role-switch/role'"

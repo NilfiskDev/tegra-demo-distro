@@ -1,0 +1,72 @@
+From 6a28fc19c4a54e9d676a3a2d0ef1b7ad09a2cb9b Mon Sep 17 00:00:00 2001
+From: Arteom Katkov <arteomk0626@gmail.com>
+Date: Thu, 10 Apr 2025 09:07:32 -0500
+Subject: [PATCH] Enable LAN78xx LEDs without Device Tree Config
+
+---
+ drivers/net/phy/microchip.c | 11 ++++++++++-
+ drivers/net/usb/lan78xx.c   | 12 +++++++++++-
+ 2 files changed, 21 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/phy/microchip.c b/drivers/net/phy/microchip.c
+index 230f2fcf9c46..d37575c485b7 100644
+--- a/drivers/net/phy/microchip.c
++++ b/drivers/net/phy/microchip.c
+@@ -246,7 +246,7 @@ static int lan88xx_probe(struct phy_device *phydev)
+ 						  led_modes,
+ 						  0,
+ 						  ARRAY_SIZE(led_modes));
+-	if (len >= 0) {
++	if (len > 0) {
+ 		u32 reg = 0;
+ 		int i;
+ 
+@@ -260,6 +260,15 @@ static int lan88xx_probe(struct phy_device *phydev)
+ 		(void)phy_write(phydev, LAN78XX_PHY_LED_MODE_SELECT, reg);
+ 	} else if (len == -EOVERFLOW) {
+ 		return -EINVAL;
++	} else {
++		u32 reg = 0;
++		int i = 0;
++		u32 default_modes[] = { LAN78XX_FORCE_LED_OFF, LAN78XX_FORCE_LED_OFF, LAN78XX_LINK_ACTIVITY, LAN78XX_ACTIVITY };
++
++		for (;i < ARRAY_SIZE(default_modes); i++) {
++			reg |= default_modes[i] << (i * 4);
++		}
++		(void)phy_write(phydev, LAN78XX_PHY_LED_MODE_SELECT, reg);
+ 	}
+ 
+ 	/* these values can be used to identify internal PHY */
+diff --git a/drivers/net/usb/lan78xx.c b/drivers/net/usb/lan78xx.c
+index d2a50cf8e343..b53efddb7770 100644
+--- a/drivers/net/usb/lan78xx.c
++++ b/drivers/net/usb/lan78xx.c
+@@ -2247,7 +2247,7 @@ static int lan78xx_phy_init(struct lan78xx_net *dev)
+ 		len = of_property_count_elems_of_size(phydev->mdio.dev.of_node,
+ 						      "microchip,led-modes",
+ 						      sizeof(u32));
+-		if (len >= 0) {
++		if (len > 0) {
+ 			/* Ensure the appropriate LEDs are enabled */
+ 			lan78xx_read_reg(dev, HW_CFG, &reg);
+ 			reg &= ~(HW_CFG_LED0_EN_ |
+@@ -2260,6 +2260,16 @@ static int lan78xx_phy_init(struct lan78xx_net *dev)
+ 				(len > 3) * HW_CFG_LED3_EN_;
+ 			lan78xx_write_reg(dev, HW_CFG, reg);
+ 		}
++	} else {
++		u32 reg;
++		/* Enabled only the last two leds */
++		lan78xx_read_reg(dev, HW_CFG, &reg);
++		reg &= ~(HW_CFG_LED0_EN_ |
++			 HW_CFG_LED1_EN_ |
++			 HW_CFG_LED2_EN_ |
++			 HW_CFG_LED3_EN_);
++		reg |= HW_CFG_LED2_EN_ | HW_CFG_LED3_EN_;
++		lan78xx_write_reg(dev, HW_CFG, reg);
+ 	}
+ 
+ 	genphy_config_aneg(phydev);
+-- 
+2.34.1
+

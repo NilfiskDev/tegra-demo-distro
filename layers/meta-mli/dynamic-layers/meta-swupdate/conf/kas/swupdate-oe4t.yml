@@ -1,0 +1,5 @@
+header:
+  version: 14
+  includes:
+    - layers/meta-mli/conf/kas/tegra-demo-distro.yml
+    - layers/meta-mli/dynamic-layers/meta-swupdate/conf/kas/include/swupdate-base.yml

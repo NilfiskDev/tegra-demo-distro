@@ -18,3 +18,15 @@
 	path = repos/meta-tegra-community
 	url = https://github.com/OE4T/meta-tegra-community
 	branch = master
+[submodule "repos/meta-iotedge"]
+	path = repos/meta-iotedge
+	url = https://github.com/Azure/meta-iotedge
+[submodule "repos/meta-security"]
+	path = repos/meta-security
+	url = https://git.yoctoproject.org/meta-security
+[submodule "repos/meta-clang"]
+	path = repos/meta-clang
+	url = https://github.com/kraj/meta-clang
+[submodule "repos/meta-browser"]
+	path = repos/meta-browser
+	url = https://github.com/OSSystems/meta-browser.git
