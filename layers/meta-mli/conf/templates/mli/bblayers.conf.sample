@@ -20,6 +20,7 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-iotedge \
   ##OEROOT##/meta-tegra-community \
   ##OEROOT##/meta-tegra-support \
+  ##OEROOT##/meta-tailscale \
   ##OEROOT##/meta-plink \
   ##OEROOT##/meta-mli \
   "

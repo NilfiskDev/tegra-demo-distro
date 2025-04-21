@@ -49,6 +49,7 @@ CORE_IMAGE_BASE_INSTALL += "\
 
 # Add misc image components
 CORE_IMAGE_BASE_INSTALL += " \
+    tailscale \
     xdg-utils \
     chromium-x11 \
     packagegroup-python3 \

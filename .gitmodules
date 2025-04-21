@@ -30,3 +30,6 @@
 [submodule "repos/meta-browser"]
 	path = repos/meta-browser
 	url = https://github.com/OSSystems/meta-browser.git
+[submodule "repos/meta-tailscale"]
+	path = repos/meta-tailscale
+	url = https://github.com/ChristophHandschuh/meta-tailscale
