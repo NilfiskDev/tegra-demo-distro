@@ -14,11 +14,10 @@ DEPLOY_KERNEL_IMAGE ?= "${@os.path.basename(tegra_kernel_image(d))}"
 
 ROOTFS_DEVICE_PATH ?= "/dev/disk/by-partlabel"
 
-# By default, use demo-image-base as the base image.
 # Redefine in local.conf if you'd like to use a different base image.
-SWUPDATE_CORE_IMAGE_NAME ?= "demo-image-base"
+SWUPDATE_CORE_IMAGE_NAME ?= "prod-image-mli"
 
-ROOTFS_FILENAME ?= "${SWUPDATE_CORE_IMAGE_NAME}-${MACHINE}.rootfs.tar.gz"
+ROOTFS_FILENAME ?= "${SWUPDATE_CORE_IMAGE_NAME}-${MACHINE}.rootfs.tar.zst"
 
 KERNEL_A_PARTNAME = "A_kernel"
 KERNEL_A_DTB_PARTNAME = "A_kernel-dtb"

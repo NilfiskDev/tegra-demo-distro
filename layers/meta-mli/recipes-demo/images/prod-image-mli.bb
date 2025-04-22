@@ -64,7 +64,8 @@ CORE_IMAGE_BASE_INSTALL += " \
     zram \
 "
 
-IMAGE_INSTALL += "ffmpeg"
+IMAGE_INSTALL += "ffmpeg swupdate"
+IMAGE_FSTYPES:append = " tar.zst"
 
 # Configure users
 inherit extrausers

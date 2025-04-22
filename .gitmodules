@@ -33,3 +33,6 @@
 [submodule "repos/meta-tailscale"]
 	path = repos/meta-tailscale
 	url = https://github.com/ChristophHandschuh/meta-tailscale
+[submodule "repos/meta-swupdate"]
+	path = repos/meta-swupdate
+	url = https://github.com/sbabic/meta-swupdate
