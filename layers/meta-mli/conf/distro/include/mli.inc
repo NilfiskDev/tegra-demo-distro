@@ -25,10 +25,10 @@ DISTRO_FEATURES ?= "${DISTRO_FEATURES_DEFAULT} ${TD_DEFAULT_DISTRO_FEATURES} tpm
 
 # As of L4T R36, Jetson platforms can use linux-yocto
 # instead of linux-jammy-nvidia-tegra
-TEGRA_DEFAULT_KERNEL ?= "linux-jammy-nvidia-tegra"
+TEGRA_DEFAULT_KERNEL ?= "linux-yocto"
 PREFERRED_PROVIDER_virtual/kernel:tegra = "${TEGRA_DEFAULT_KERNEL}"
-PREFERRED_VERSION_linux-yocto ?= "5.15%"
-PREFERRED_VERSION_linux-yocto-rt ?= "5.15%"
+PREFERRED_VERSION_linux-yocto ?= "6.12%"
+PREFERRED_VERSION_linux-yocto-rt ?= "6.12%"
 
 SDK_NAME = "${DISTRO}-${TCLIBC}-${SDKMACHINE}-${IMAGE_BASENAME}-${TUNE_PKGARCH}-${MACHINE}"
 SDKPATHINSTALL = "/opt/${DISTRO}/${SDK_VERSION}"

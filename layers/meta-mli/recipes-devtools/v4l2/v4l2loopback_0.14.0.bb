@@ -2,9 +2,9 @@ DESCRIPTION = "A kernel module to create V4L2 loopback devices"
 LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263"
 
-SRC_URI = "git://github.com/umlaeute/v4l2loopback.git;protocol=https;nobranch=1;tag=v0.12.5"
+SRC_URI = "git://github.com/umlaeute/v4l2loopback.git;protocol=https;branch=main;"
 
-SRCREV = "af1be06354eb2faa56bb3ce82fcd18e641fac89b"
+SRCREV = "119543510c0455f4e6517ae82d81d65354225a31"
 
 S = "${WORKDIR}/git"
 

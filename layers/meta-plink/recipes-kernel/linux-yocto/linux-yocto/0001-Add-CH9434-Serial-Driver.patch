@@ -1467,7 +1467,7 @@ index 000000000000..f09a6b543134
 +    dev_info(dev, "%s - firmware version: V%d.%d\n", __func__, s->ver[1], s->ver[0]);
 +
 +    /* Init UART Clock */
-+    ch943x_port_write(&s->p[0].port, CH943X_CLK_REG, CH943X_CLK_EXT_BIT | CH943X_CLK_PLL_BIT | clkdiv);
++    ch943x_port_write(&s->p[0].port, CH943X_CLK_REG, CH943X_CLK_PLL_BIT | clkdiv);
 +
 +    ret = devm_request_threaded_irq(dev, irq, ch943x_ist_top, ch943x_ist, IRQF_ONESHOT | flags, dev_name(dev), s);
 +    // flags, dev_name(dev), s);

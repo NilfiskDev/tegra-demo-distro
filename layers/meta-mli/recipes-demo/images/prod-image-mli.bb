@@ -53,7 +53,6 @@ CORE_IMAGE_BASE_INSTALL += " \
     xdg-utils \
     chromium-x11 \
     packagegroup-python3 \
-    v4l2loopback \
     devmem2 \
     e2fsprogs-resize2fs \
     fake-hwclock \
@@ -63,6 +62,7 @@ CORE_IMAGE_BASE_INSTALL += " \
     xuser-account \
     zram \
 "
+# TODO: Add     v4l2loopback
 
 IMAGE_INSTALL += "ffmpeg"
 
