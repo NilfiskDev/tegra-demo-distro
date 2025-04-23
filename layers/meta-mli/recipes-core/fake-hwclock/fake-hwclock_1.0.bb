@@ -1,3 +1,4 @@
+SUMMARY = "Fake hardware clock service for systems without a real-time clock"
 LICENSE = "CLOSED"
 
 inherit systemd

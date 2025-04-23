@@ -45,15 +45,16 @@ CORE_IMAGE_BASE_INSTALL += "\
     tegra-libraries-multimedia-v4l \
     tegra-libraries-camera \
     packagegroup-gstreamer-plugins \
+    pva-allow-2 \
 "
 
 # Add misc image components
 CORE_IMAGE_BASE_INSTALL += " \
+    dpkg \
     tailscale \
     xdg-utils \
     chromium-x11 \
     packagegroup-python3 \
-    v4l2loopback \
     devmem2 \
     e2fsprogs-resize2fs \
     fake-hwclock \

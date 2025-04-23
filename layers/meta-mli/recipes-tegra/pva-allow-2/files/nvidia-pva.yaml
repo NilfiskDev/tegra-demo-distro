@@ -1,0 +1,46 @@
+---
+cdiVersion: 0.5.0
+containerEdits:
+  mounts:
+  - containerPath: /run/nvidia-pva-allowd
+    hostPath: /run/nvidia-pva-allowd
+    options:
+    - ro
+    - nosuid
+    - nodev
+    - bind
+  hooks:
+  - path: /usr/bin/nvidia-pva-hook
+    hookName: createContainer
+    args:
+    - nvidia-pva-hook
+    - -d
+    - /etc/pva/allow.d
+    - create
+  - path: /usr/bin/nvidia-pva-allow
+    hookName: createContainer
+    args:
+    - nvidia-pva-allow
+    - update
+  - path: /usr/bin/nvidia-pva-hook
+    hookName: poststop
+    args:
+    - nvidia-pva-hook
+    - -d
+    - /etc/pva/allow.d
+    - remove
+  - path: /usr/bin/nvidia-pva-allow
+    hookName: poststop
+    args:
+    - nvidia-pva-allow
+    - update
+devices:
+- name: "0"
+  containerEdits:
+    env:
+    - NVIDIA_PVA_DEVICE=0
+- name: all
+  containerEdits:
+    env:
+    - NVIDIA_PVA_DEVICE=all
+kind: nvidia.com/pva
