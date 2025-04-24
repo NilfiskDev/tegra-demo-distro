@@ -41,9 +41,7 @@ CORE_IMAGE_BASE_INSTALL += "\
     tegra-mmapi \
     libnvvpi3 \
     tegra-libraries-vulkan \
-    tegra-libraries-multimedia-utils \
     tegra-libraries-multimedia-v4l \
-    tegra-libraries-camera \
     packagegroup-gstreamer-plugins \
     pva-allow-2 \
 "
@@ -75,5 +73,4 @@ NVIDIA_PASSWORD = "\$6\$qToCNITxIvqTSDSF\$UmckNUSMLOr7MLtLWhOCO6Jke2a..3qc5jntDU
 EXTRA_USERS_PARAMS:append = "\
     useradd -u 1000 -d /home/nvidia -s /bin/sh -p '${NVIDIA_PASSWORD}' nvidia; \
     usermod -a -G sudo,systemd-journal,shutdown nvidia; \
-    usermod -L -e 1 root; \
 "
