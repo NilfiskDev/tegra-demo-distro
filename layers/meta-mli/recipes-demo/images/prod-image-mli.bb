@@ -73,4 +73,7 @@ NVIDIA_PASSWORD = "\$6\$qToCNITxIvqTSDSF\$UmckNUSMLOr7MLtLWhOCO6Jke2a..3qc5jntDU
 EXTRA_USERS_PARAMS:append = "\
     useradd -u 1000 -d /home/nvidia -s /bin/sh -p '${NVIDIA_PASSWORD}' nvidia; \
     usermod -a -G sudo,systemd-journal,shutdown nvidia; \
+    groupadd --system chromiumctl; \
+    usermod -a -G chromiumctl xuser; \
+    usermod -a -G chromiumctl nvidia; \
 "

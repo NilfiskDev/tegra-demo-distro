@@ -27,6 +27,8 @@ FILES:${PN} += "\
     /opt/nvidia/pva-allow-2/bin/pvasdkAllowlist.py \
     /opt/nvidia/pva-allow-2/bin/pvasdkBinTools.py \
     ${sysconfdir}/cdi/nvidia-pva.yaml \
+    ${bindir}/nvidia-pva-allow \
+    ${bindir}/nvidia-pva-hook \
 "
 
 do_install:append() {
@@ -42,4 +44,8 @@ do_install:append() {
 
     install -d ${D}${sysconfdir}/cdi/
     install -m 0644 ${UNPACKDIR}/nvidia-pva.yaml ${D}${sysconfdir}/cdi
+
+    install -d ${D}${bindir}
+    ln -sf /opt/nvidia/pva-allow-2/bin/nvidiaPvaAllow.py ${D}/usr/bin/nvidia-pva-allow
+    ln -sf /opt/nvidia/pva-allow-2/bin/nvidiaPvaHook.py ${D}/usr/bin/nvidia-pva-hook
 }
