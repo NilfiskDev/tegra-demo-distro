@@ -27,7 +27,7 @@ IMAGE_INSTALL += "\
     xf86-video-modesetting \
     packagegroup-core-x11-utils \
 "
-EXTRA_IMAGE_FEATURES += "x11 package-management"
+EXTRA_IMAGE_FEATURES += "x11"
 
 # Add Virtualization Components
 CORE_IMAGE_BASE_INSTALL += "nvidia-docker docker-compose"
