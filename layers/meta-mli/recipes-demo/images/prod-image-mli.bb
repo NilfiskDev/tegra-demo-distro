@@ -36,6 +36,7 @@ CORE_IMAGE_BASE_INSTALL += "nvidia-docker docker-compose"
 CORE_IMAGE_BASE_INSTALL += "\
     cuda-libraries \
     opencv \
+    v4l-utils \
     cudnn \
     tensorrt-core \
     tegra-mmapi \
@@ -48,6 +49,8 @@ CORE_IMAGE_BASE_INSTALL += "\
 
 # Add misc image components
 CORE_IMAGE_BASE_INSTALL += " \
+    polkit \
+    polkit-group-rule-datetime \
     dpkg \
     tailscale \
     xdg-utils \
@@ -72,7 +75,7 @@ IMAGE_INSTALL:append = " sudo"
 NVIDIA_PASSWORD = "\$6\$qToCNITxIvqTSDSF\$UmckNUSMLOr7MLtLWhOCO6Jke2a..3qc5jntDUBRQBWZU8rA6/05U/KLNLuZI7fbrwFZ7pKL9628ioA59xOQS/"
 EXTRA_USERS_PARAMS:append = "\
     useradd -u 1000 -d /home/nvidia -s /bin/sh -p '${NVIDIA_PASSWORD}' nvidia; \
-    usermod -a -G sudo,systemd-journal,shutdown nvidia; \
+    usermod -a -G datetime,sudo,systemd-journal,shutdown nvidia; \
     groupadd --system chromiumctl; \
     usermod -a -G chromiumctl xuser; \
     usermod -a -G chromiumctl nvidia; \
