@@ -16,7 +16,11 @@ CORE_IMAGE_BASE_INSTALL += "\
 "
 
 # Add iotedge and aziot-edged
-CORE_IMAGE_BASE_INSTALL += "iotedge aziot-edged"
+CORE_IMAGE_BASE_INSTALL += "\
+    iotedge \
+    aziot-edged \
+    adu-agent-service \
+"
 
 # Add X11 Server and dependencies
 IMAGE_INSTALL += "\

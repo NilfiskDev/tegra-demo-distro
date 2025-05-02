@@ -33,3 +33,12 @@
 [submodule "repos/meta-tailscale"]
 	path = repos/meta-tailscale
 	url = https://github.com/ChristophHandschuh/meta-tailscale
+[submodule "repos/meta-iot-hub-device-update-delta"]
+	path = repos/meta-iot-hub-device-update-delta
+	url = https://github.com/AKatkov-NF/meta-iot-hub-device-update-delta
+[submodule "repos/meta-azure-device-update"]
+	path = repos/meta-azure-device-update
+	url = https://github.com/AKatkov-NF/meta-azure-device-update
+[submodule "repos/meta-swupdate"]
+	path = repos/meta-swupdate
+	url = https://github.com/sbabic/meta-swupdate

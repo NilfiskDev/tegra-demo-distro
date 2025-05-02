@@ -17,7 +17,10 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-clang \
   ##OEROOT##/meta-chromium \
   ##OEROOT##/meta-tpm \
+  ##OEROOT##/meta-swupdate \
   ##OEROOT##/meta-iotedge \
+  ##OEROOT##/meta-iot-hub-device-update-delta\
+  ##OEROOT##/meta-azure-device-update \
   ##OEROOT##/meta-tegra-community \
   ##OEROOT##/meta-tegra-support \
   ##OEROOT##/meta-tailscale \
