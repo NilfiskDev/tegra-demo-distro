@@ -55,6 +55,8 @@ CORE_IMAGE_BASE_INSTALL += "\
 CORE_IMAGE_BASE_INSTALL += " \
     polkit \
     polkit-group-rule-datetime \
+    ttf-dejavu-sans \
+    ttf-dejavu-serif \
     dpkg \
     tailscale \
     xdg-utils \
