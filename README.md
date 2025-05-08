@@ -32,7 +32,7 @@ package is recommended.
 
         $ git clone https://github.com/NilfiskDev/tegra-demo-distro.git
 
-2. Switch to the appropriate branch, jetapck-x.x.x
+2. Switch to the appropriate branch (master contains latest release)
 
 3. Initialize the git submodules:
 
@@ -45,7 +45,8 @@ package is recommended.
    called `build` that is set up for the Jetson Xavier NX
    developer kit and the default `tegrademo` distro:
 
-        $ . ./setup-env --machine jetson-plink-11f1e2
+        $ . ./setup-env --machine jetson-plink-11f1e2-4gb
+        $ . ./setup-env --machine jetson-plink-11f1e2-8gb
 
    You can get a complete list of available options, MACHINE
    names, and DISTRO names with
