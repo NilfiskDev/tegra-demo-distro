@@ -53,6 +53,7 @@ CORE_IMAGE_BASE_INSTALL += "\
 
 # Add misc image components
 CORE_IMAGE_BASE_INSTALL += " \
+    geoclue \
     polkit \
     polkit-group-rule-datetime \
     ttf-dejavu-sans \
