@@ -1,0 +1,9 @@
+/* give group 'datetime' rights to change settings */
+/* based upon http://lists.freedesktop.org/archives/systemd-devel/2013-March/009576.html */
+
+polkit.addRule(function(action, subject) {
+  if (action.id == "org.freedesktop.ModemManager1.Device.Control" ||
+    action.id == "org.freedesktop.ModemManager1.Location") {
+    return polkit.Result.YES;
+  }
+});
