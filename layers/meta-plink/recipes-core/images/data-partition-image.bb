@@ -11,7 +11,7 @@ IMAGE_NAME_SUFFIX = ""
 inherit image
 
 fakeroot python do_rootfs:append() {
-    import subprocessvar
+    import subprocess
 
     # Delete the auto generated files from image.bbclass (make it truly empty)
     rootfs_dir = d.getVar('IMAGE_ROOTFS')
