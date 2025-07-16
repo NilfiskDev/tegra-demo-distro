@@ -1,0 +1,14 @@
+# MLI custom fstab file
+
+/dev/root            /                    auto       defaults              1  1
+proc                 /proc                proc       defaults              0  0
+devpts               /dev/pts             devpts     mode=0620,ptmxmode=0666,gid=5      0  0
+tmpfs                /run                 tmpfs      mode=0755,nodev,nosuid,strictatime 0  0
+tmpfs                /var/volatile        tmpfs      defaults              0  0
+
+# Overlay filesystem for /data
+overlay /adu overlay lowerdir=/adu,upperdir=/data/adu/upper,workdir=/data/adu/work 0 0
+overlay /etc overlay lowerdir=/etc,upperdir=/data/etc/upper,workdir=/data/etc/work 0 0
+overlay /usr overlay lowerdir=/usr,upperdir=/data/usr/upper,workdir=/data/usr/work 0 0
+overlay /var/lib overlay lowerdir=/var/lib,upperdir=/data/var/lib/upper,workdir=/data/var/lib/work 0 0
+overlay /var/log overlay lowerdir=/var/log,upperdir=/data/var/log/upper,workdir=/data/var/log/work 0 0
