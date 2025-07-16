@@ -2,6 +2,10 @@ DESCRIPTION = "MLI Production Image"
 
 require tegra-image-common.inc
 
+IMAGE_OVERHEAD_FACTOR = "1.05"
+EXTRA_IMAGE_FEATURES += "read-only-rootfs"
+IMAGE_FSTYPES += "tar.gz"
+
 # Install networking dependencies
 CORE_IMAGE_BASE_INSTALL += "\
     networkmanager \
@@ -19,6 +23,10 @@ CORE_IMAGE_BASE_INSTALL += "\
 CORE_IMAGE_BASE_INSTALL += "\
     iotedge \
     aziot-edged \
+"
+
+# Add iotedge and aziot-edged
+CORE_IMAGE_BASE_INSTALL += "\
     adu-agent-service \
 "
 
@@ -73,17 +81,24 @@ CORE_IMAGE_BASE_INSTALL += " \
     zram \
 "
 
-IMAGE_INSTALL += "ffmpeg"
+IMAGE_INSTALL += "\
+    ffmpeg \
+    sudo \
+"
+
+# Add application components
+CORE_IMAGE_BASE_INSTALL += "\
+    data-overlay-setup \
+    nvidia-user \
+    power-control \
+    update-service \
+"
 
 # Configure users
 inherit extrausers
-IMAGE_INSTALL:append = " sudo"
 
-NVIDIA_PASSWORD = "\$6\$qToCNITxIvqTSDSF\$UmckNUSMLOr7MLtLWhOCO6Jke2a..3qc5jntDUBRQBWZU8rA6/05U/KLNLuZI7fbrwFZ7pKL9628ioA59xOQS/"
 EXTRA_USERS_PARAMS:append = "\
-    useradd -u 1000 -d /home/nvidia -s /bin/sh -p '${NVIDIA_PASSWORD}' nvidia; \
-    usermod -a -G datetime,sudo,systemd-journal,shutdown nvidia; \
-    groupadd --system chromiumctl; \
+    groupadd --system --gid 796 chromiumctl; \
     usermod -a -G chromiumctl xuser; \
     usermod -a -G chromiumctl nvidia; \
 "

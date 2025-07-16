@@ -1,0 +1,14 @@
+[Unit]
+Description=Update Service
+After=compose_run.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/usr/local/bin
+ExecStart=/usr/bin/uvicorn update_service:app --host 0.0.0.0 --port 7002
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
