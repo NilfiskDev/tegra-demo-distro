@@ -1,0 +1,40 @@
+#!/bin/sh
+ 
+# Disable screen saver, blanking, and DPMS
+xset s off
+xset s noblank
+xset -dpms
+ 
+# Set necessary environment variables
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
+mkdir -p "$XDG_RUNTIME_DIR"
+chmod 700 "$XDG_RUNTIME_DIR"
+ 
+# Start D-Bus session bus
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
+ 
+# Launch Chromium
+taskset -c 0 chromium \
+  --no-sandbox \
+  --enable-unsafe-webgpu \
+  --enable-features=OverlayScrollbar,Vulkan,AcceleratedVideoEncoder,AcceleratedVideoDecoder,AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL \
+  --enable-logging=stderr \
+  --v=1 \
+  --disable-infobars \
+  --disable-session-crashed-bubble \
+  --disable-background-mode \
+  --disable-renderer-backgrounding \
+  --kiosk \
+  --disable-touch-drag-drop \
+  --no-first-run \
+  --guest \
+  --disable-pinch \
+  --overscroll-history-navigation=0 \
+  --noerrdialogs \
+  --disable-translate \
+  --disable-cache \
+  --use-fake-ui-for-media-stream \
+  --window-position=0,0 \
+  --window-size=1024,600 \
+  --pull-to-refresh=0 \
+http://localhost:3000/

@@ -1,0 +1,13 @@
+[Unit]
+Description=Virtaul Touchpad Multitouch Disable
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=python3 /usr/local/bin/multitouch_disable.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

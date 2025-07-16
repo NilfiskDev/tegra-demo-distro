@@ -20,6 +20,7 @@ UNPACKDIR = "${S}"
 SRC_URI += "\
     file://power_control.service \
     file://power_control.sh \
+    file://power \
 "
 
 FILES:${PN} += "\
@@ -36,7 +37,6 @@ do_install:append() {
     install -m 0755 ${UNPACKDIR}/power_control.sh ${D}/usr/local/bin
 
     install -d ${D}/usr/config
-    touch ${D}/usr/config/power
+    install -m 0700 ${UNPACKDIR}/power ${D}/usr/config/power
     chown nvidia:nvidia ${D}/usr/config/power
-    chmod 700 ${D}/usr/config/power
 }

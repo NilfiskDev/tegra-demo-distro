@@ -1,0 +1,13 @@
+[Unit]
+Description=Nilfisk SocketCAN dependencies
+After=network.target
+
+[Service]
+ExecStart=/etc/nilfisk/setup_can0.sh
+RemainAfterExit=yes
+User=root
+Group=root
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target

@@ -3,7 +3,13 @@ SRC_URI += "\
     file://99-tty0-3.rules \
     file://xuser.conf \
     file://99-nvidia-modeset.conf \
+    file://xinitrc \
 "
+
+USERADD_PARAM:${PN} = "--create-home \
+                       --uid 13624 \
+                       --groups video,tty,audio,input,shutdown,disk \
+                       --user-group xuser"
 
 do_install:append() {
     install -d ${D}${sysconfdir}/udev/rules.d
@@ -14,10 +20,16 @@ do_install:append() {
     
     install -d ${D}${sysconfdir}/modules-load.d
     install -m 0644 ${UNPACKDIR}/99-nvidia-modeset.conf ${D}${sysconfdir}/modules-load.d/99-nvidia-modeset.conf
+
+    install -d ${D}/home/xuser
+    install -m 0644 ${UNPACKDIR}/xinitrc ${D}/home/xuser/.xinitrc
+    chown xuser:xuser ${D}/home/xuser/.xinitrc
+    chmod 0755 ${D}/home/xuser/.xinitrc
 }
 
 FILES:${PN} += "\
     ${sysconfdir}/udev/rules.d/99-tty0-3.rules \
     ${sysconfdir}/tmpfiles.d/xuser.conf \
     ${sysconfdir}/modules-load.d/99-nvidia-modeset.conf \
+    /home/xuser/.xinitrc \
 "

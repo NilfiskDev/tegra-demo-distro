@@ -1,0 +1,12 @@
+[Unit]
+Description=Chromium Control Service
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/chromium_control.sh
+Restart=always
+User=xuser
+Environment=DISPLAY=:0
+
+[Install]
+WantedBy=multi-user.target

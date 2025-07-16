@@ -19,14 +19,10 @@ CORE_IMAGE_BASE_INSTALL += "\
     ifupdown \
 "
 
-# Add iotedge and aziot-edged
+# Add iotedge, aziot-edged, and ADU
 CORE_IMAGE_BASE_INSTALL += "\
     iotedge \
     aziot-edged \
-"
-
-# Add iotedge and aziot-edged
-CORE_IMAGE_BASE_INSTALL += "\
     adu-agent-service \
 "
 
@@ -92,13 +88,15 @@ CORE_IMAGE_BASE_INSTALL += "\
     nvidia-user \
     power-control \
     update-service \
+    multitouch-disable \
+    compose-run \
+    nilfisk-can \
+    chromium-control \
 "
 
 # Configure users
 inherit extrausers
-
 EXTRA_USERS_PARAMS:append = "\
-    groupadd --system --gid 796 chromiumctl; \
     usermod -a -G chromiumctl xuser; \
     usermod -a -G chromiumctl nvidia; \
 "

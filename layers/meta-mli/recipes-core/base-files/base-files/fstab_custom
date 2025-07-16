@@ -11,3 +11,4 @@ overlay /adu overlay lowerdir=/adu,upperdir=/data/adu/upper,workdir=/data/adu/wo
 overlay /etc overlay lowerdir=/etc,upperdir=/data/etc/upper,workdir=/data/etc/work 0 0
 overlay /usr overlay lowerdir=/usr,upperdir=/data/usr/upper,workdir=/data/usr/work 0 0
 overlay /var/lib overlay lowerdir=/var/lib,upperdir=/data/var/lib/upper,workdir=/data/var/lib/work 0 0
+overlay /var/log overlay lowerdir=/var/log,upperdir=/data/var/log/upper,workdir=/data/var/log/work 0 0
