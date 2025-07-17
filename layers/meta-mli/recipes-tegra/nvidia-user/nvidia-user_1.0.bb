@@ -23,11 +23,12 @@ NVIDIA_PASSWORD = "\$6\$qToCNITxIvqTSDSF\$UmckNUSMLOr7MLtLWhOCO6Jke2a..3qc5jntDU
 
 USERADD_PACKAGES = "${PN}"
 USERADD_PARAM:${PN} = "\
-    -u 1000 -g 1000 -d /home/nvidia -s /bin/sh -p '${NVIDIA_PASSWORD}' -G datetime,sudo,systemd-journal,shutdown nvidia ; \
-"
-
-GROUPADD_PARAM:${PN} = "\
-    --gid 1000 --system nvidia ; \
+    --home-dir /home/nvidia \
+    --shell /bin/sh \
+    --password '${NVIDIA_PASSWORD}' \
+    --groups datetime,sudo,systemd-journal,shutdown \
+    --user-group \
+    nvidia ; \
 "
 
 ALLOW_EMPTY:${PN} = "1"
