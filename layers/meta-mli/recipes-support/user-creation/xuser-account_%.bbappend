@@ -6,11 +6,6 @@ SRC_URI += "\
     file://xinitrc \
 "
 
-USERADD_PARAM:${PN} = "--create-home \
-                       --uid 13624 \
-                       --groups video,tty,audio,input,shutdown,disk \
-                       --user-group xuser"
-
 do_install:append() {
     install -d ${D}${sysconfdir}/udev/rules.d
     install -m 0644 ${UNPACKDIR}/99-tty0-3.rules ${D}${sysconfdir}/udev/rules.d/99-tty0-3.rules
@@ -25,6 +20,7 @@ do_install:append() {
     install -m 0644 ${UNPACKDIR}/xinitrc ${D}/home/xuser/.xinitrc
     chown xuser:xuser ${D}/home/xuser/.xinitrc
     chmod 0755 ${D}/home/xuser/.xinitrc
+    chown -R xuser:xuser ${D}/home/xuser
 }
 
 FILES:${PN} += "\

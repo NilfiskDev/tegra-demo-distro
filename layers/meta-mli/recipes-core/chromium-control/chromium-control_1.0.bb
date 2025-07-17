@@ -2,6 +2,10 @@ LICENSE = "CLOSED"
 SUMMARY = "Power Control Service for Control of Power States"
 MAINTAINER = "Arteom Katkov <akatkov@nilfisk.com>"
 
+# Nvidia has same UID/GID as host so we need to skip host contamination check
+ERROR_QA:remove = "host-user-contaminated"
+WARN_QA:append = " host-user-contaminated"
+
 inherit systemd
 
 DEPENDS += "xuser-account"
