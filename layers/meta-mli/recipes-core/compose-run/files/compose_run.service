@@ -9,4 +9,4 @@ ExecStop=/usr/bin/docker compose -f /usr/update/current_docker-compose.yml down
 Restart=always
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target

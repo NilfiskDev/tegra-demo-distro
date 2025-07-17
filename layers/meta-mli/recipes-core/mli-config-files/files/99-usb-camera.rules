@@ -1,0 +1,5 @@
+SUBSYSTEM=="video4linux", KERNEL=="video[0-9]*", ACTION=="add", \
+  ENV{ID_VENDOR_ID}=="0bda", ENV{ID_MODEL_ID}=="3035", \
+  GROUP="video", MODE="0660", \
+  SYMLINK+="rear-cam", \
+  OPTIONS+="last_rule"

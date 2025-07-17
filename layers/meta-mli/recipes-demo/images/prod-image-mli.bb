@@ -6,6 +6,13 @@ IMAGE_OVERHEAD_FACTOR = "1.05"
 EXTRA_IMAGE_FEATURES += "read-only-rootfs"
 IMAGE_FSTYPES += "tar.gz"
 
+ROOTFS_POSTPROCESS_COMMAND += "mask_networkmanager_wait_online;"
+
+mask_networkmanager_wait_online() {
+    rm -f ${IMAGE_ROOTFS}/etc/systemd/system/network-online.target.wants/NetworkManager-wait-online.service
+    rm -f ${IMAGE_ROOTFS}/etc/systemd/system/network-online.target.wants/systemd-networkd-wait-online.service
+}
+
 # Install networking dependencies
 CORE_IMAGE_BASE_INSTALL += "\
     networkmanager \
@@ -92,6 +99,7 @@ CORE_IMAGE_BASE_INSTALL += "\
     compose-run \
     nilfisk-can \
     chromium-control \
+    mli-config-files \
 "
 
 # Configure users

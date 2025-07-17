@@ -1,0 +1,6 @@
+# Setup MMC interface
+auto eth0
+iface eth0 inet static
+    address 10.97.0.200
+    netmask 255.255.255.0
+    post-up /sbin/ethtool -s eth0 wol b

@@ -9,13 +9,38 @@
 # creates those directories if they aren't already present.
 process_mntopts() {
     read opt1 opt2 opt3 opt4 opt5 opt6 opt7 opt8
+
+    # Find lowerdir value
+    lowerdir=""
     for opt in $opt1 $opt2 $opt3 $opt4 $opt5 $opt6 $opt7 $opt8; do
-	for tag in upperdir workdir; do
-	    val="${opt##$tag=}"
-	    if [ "$opt" != "$val" -a ! -d "$val" ]; then
-		mkdir -p "$val"
-	    fi
-	done
+        case "$opt" in
+            lowerdir=*)
+                lowerdir="${opt#lowerdir=}"
+                ;;
+        esac
+    done
+
+    # If lowerdir doesn't exist, no point proceeding with copying perms
+    if [ -z "$lowerdir" ] || [ ! -d "$lowerdir" ]; then
+        lowerdir=""
+    fi
+
+    # Now create upperdir and workdir if needed, and copy perms from lowerdir
+    for opt in $opt1 $opt2 $opt3 $opt4 $opt5 $opt6 $opt7 $opt8; do
+        for tag in upperdir workdir; do
+            val="${opt##$tag=}"
+            if [ "$opt" != "$val" -a ! -d "$val" ]; then
+                mkdir -p "$val"
+                if [ -n "$lowerdir" ]; then
+                    # Copy permissions from lowerdir
+                    perms=$(stat -c %a "$lowerdir" 2>/dev/null)
+                    [ -n "$perms" ] && chmod "$perms" "$val"
+                    # Copy ownership from lowerdir
+                    owner=$(stat -c %u:%g "$lowerdir" 2>/dev/null)
+                    [ -n "$owner" ] && chown "$owner" "$val"
+                fi
+            fi
+        done
     done
 }
 

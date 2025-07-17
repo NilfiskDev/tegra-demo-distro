@@ -1,0 +1,16 @@
+{
+  "dns": ["8.8.8.8", "8.8.4.4"], 
+  "log-driver": "local",
+  "log-opts": {
+    "max-size": "100m"
+  },
+  "storage-driver": "overlay2",
+  "data-root": "/data/docker",
+  "runtimes": {
+      "nvidia": {
+          "path": "nvidia-container-runtime",
+          "runtimeArgs": []
+      }
+  },
+  "default-runtime": "nvidia"
+}

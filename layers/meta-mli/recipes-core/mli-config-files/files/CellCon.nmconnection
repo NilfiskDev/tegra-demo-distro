@@ -1,0 +1,16 @@
+[connection]
+id=CellCon
+uuid=1be744f3-17bd-4116-b19c-e83902398bd8
+type=gsm
+
+[gsm]
+apn=flolive.net
+
+[ipv4]
+method=auto
+
+[ipv6]
+addr-gen-mode=stable-privacy
+method=auto
+
+[proxy]
