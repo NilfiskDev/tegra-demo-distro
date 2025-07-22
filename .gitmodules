@@ -42,3 +42,6 @@
 [submodule "repos/meta-swupdate"]
 	path = repos/meta-swupdate
 	url = https://github.com/sbabic/meta-swupdate
+[submodule "repos/mli-yocto-layers"]
+	path = repos/mli-yocto-layers
+	url = git@bitbucket.org:nilfisksoftware/mli-yocto-layers.git
