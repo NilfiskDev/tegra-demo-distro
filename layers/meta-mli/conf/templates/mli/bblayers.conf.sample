@@ -19,7 +19,7 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-tpm \
   ##OEROOT##/meta-swupdate \
   ##OEROOT##/meta-iotedge \
-  ##OEROOT##/meta-iot-hub-device-update-delta\
+  ##OEROOT##/meta-iot-hub-device-update-delta \
   ##OEROOT##/meta-azure-device-update \
   ##OEROOT##/meta-tegra-community \
   ##OEROOT##/meta-tegra-support \
