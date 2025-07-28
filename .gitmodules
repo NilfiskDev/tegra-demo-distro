@@ -20,7 +20,7 @@
 	branch = master
 [submodule "repos/meta-iotedge"]
 	path = repos/meta-iotedge
-	url = https://github.com/Azure/meta-iotedge
+	url = https://github.com/AKatkov-NF/meta-iotedge
 [submodule "repos/meta-security"]
 	path = repos/meta-security
 	url = https://git.yoctoproject.org/meta-security
