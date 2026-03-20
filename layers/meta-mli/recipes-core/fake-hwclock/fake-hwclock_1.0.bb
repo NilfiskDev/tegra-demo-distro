@@ -19,7 +19,7 @@ SRC_URI += "\
 FILES:${PN} += "\
     ${systemd_unitdir}/system/fake-hwclock.service \
     ${systemd_unitdir}/system/fake-hwclock-tick.service \
-    ${systemd_unitdir}/system/fake-hwclock-tick.timer \\
+    ${systemd_unitdir}/system/fake-hwclock-tick.timer \
     /usr/local/bin/fake-hwclock \
 "
 

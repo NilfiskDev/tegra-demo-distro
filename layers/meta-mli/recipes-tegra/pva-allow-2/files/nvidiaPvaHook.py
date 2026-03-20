@@ -25,7 +25,10 @@ def createLink(dirName, idString):
     containerDir.mkdir(parents=True, exist_ok=True)
     # Create symlink
     symlinkPath = dirPath / idString
-    symlinkPath.symlink_to(containerDir, target_is_directory=True)
+    try:
+        symlinkPath.symlink_to(containerDir, target_is_directory=True) # This fails sometimes if the machine looses power abruptly (symlink already exists)
+    except Exception as e:
+        pass
 
 
 def removeLink(dirName, idString):
