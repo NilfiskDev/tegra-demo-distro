@@ -1,0 +1,14 @@
+[Unit]
+Description=Quectel EM05-G Modem QMI Mode Setup
+After=systemd-udevd.service
+Before=ModemManager.service NetworkManager.service
+Wants=systemd-udevd.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/quectel-modem-setup.sh
+TimeoutStartSec=60
+
+[Install]
+WantedBy=multi-user.target
