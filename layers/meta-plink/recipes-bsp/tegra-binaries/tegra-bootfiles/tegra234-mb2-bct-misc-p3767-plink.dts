@@ -1,6 +1,6 @@
 /dts-v1/;
 
-#include "tegra234-mb2-bct-common.dtsi" 
+#include "tegra234-mb2-bct-common.dtsi"
 
 / {
 	mb2-misc {
