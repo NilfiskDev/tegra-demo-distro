@@ -13,7 +13,6 @@ CORE_IMAGE_BASE_INSTALL += "\
     networking-service \
     iproute2 \
     ifupdown \
-    quectel-modem-setup \
 "
 
 # Add iotedge and aziot-edged
