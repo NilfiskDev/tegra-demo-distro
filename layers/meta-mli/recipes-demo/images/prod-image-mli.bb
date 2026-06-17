@@ -78,6 +78,7 @@ IMAGE_INSTALL += "ffmpeg"
 # Configure users
 inherit extrausers
 IMAGE_INSTALL:append = " sudo"
+IMAGE_INSTALL:append = " chrony chronyc"
 
 NVIDIA_PASSWORD = "\$6\$qToCNITxIvqTSDSF\$UmckNUSMLOr7MLtLWhOCO6Jke2a..3qc5jntDUBRQBWZU8rA6/05U/KLNLuZI7fbrwFZ7pKL9628ioA59xOQS/"
 EXTRA_USERS_PARAMS:append = "\
