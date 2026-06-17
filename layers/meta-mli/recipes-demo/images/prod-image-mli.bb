@@ -71,6 +71,8 @@ CORE_IMAGE_BASE_INSTALL += " \
     vulkan-headers \
     xuser-account \
     zram \
+    libgpiod-tools \
+    usbutils \
 "
 
 IMAGE_INSTALL += "ffmpeg"
