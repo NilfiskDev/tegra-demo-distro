@@ -73,6 +73,9 @@ CORE_IMAGE_BASE_INSTALL += " \
     zram \
     libgpiod-tools \
     usbutils \
+    kernel-module-option \
+    kernel-module-usb-wwan \
+    modprobe-blacklist \
 "
 
 IMAGE_INSTALL += "ffmpeg"
